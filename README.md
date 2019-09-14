@@ -20,9 +20,7 @@ Information to make sense of the state of open switching/routing
  FBOSS           |            | FBOSS?  |               | SAI (was OpenNSL) |                       | all-in-one?                                      | 
  ONOS            |            |         |               | openflow/netconf/openconf/...   |         |                                                  | https://onosproject.org/ https://wiki.onosproject.org         
  openvswitch     |            | N/A     | OVSDB         | software?    |                            | software forwarding                              | https://www.openvswitch.org/
-                 |            |         |               |              |                            |                                                  |          
-                 |            |         |               |              |                            |                                                  |          
-                 |            |         |               |              |                            |                                                  |          
+ .               |            |         |               |              |                            |                                                  |          
 
 
 
@@ -36,45 +34,41 @@ I haven't decided where these fit yet:
 
 ## routing daemons
 
- name               | license                 | notes                              | more info
---------------------|-------------------------|------------------------------------|----------
- BIRD               | GPL                     | common in route reflectors         | https://bird.network.cz/         
- FRR                |                         | "Free Range Routing" (fork of Quagga) | https://frrouting.org/
- Quagga             |                         | fork of Zebra                      | http://www.quagga.net/
- zebra              |                         | (old, unmaintained)                | 
- FBOSS              |                         |                                    | https://engineering.fb.com/data-center-engineering/facebook-open-switching-system-fboss-and-wedge-in-the-open/
- XORP               |                         |                                    | http://www.xorp.org/
- GoBGP              | APL2.0                  |                                    | https://github.com/osrg/gobgp
- openBGPD/openOSPFD | BSD                     |                                    | http://www.openbgpd.org/
- exaBGP             | BSD-style               | used for integration rather than forwarding | https://github.com/Exa-Networks/exabgp
-                    |                         |                                    |          
+ name                                             | license                 | notes                              
+--------------------------------------------------|-------------------------|------------------------------------
+ [BIRD](https://bird.network.cz/)                 | GPL                     | common in route reflectors
+ [FRR](https://frrouting.org/)                    |                         | "Free Range Routing" (fork of Quagga)
+ [Quagga](http://www.quagga.net/)                 |                         | fork of Zebra
+ zebra                                            |                         | (old, unmaintained)
+ [FBOSS](https://github.com/facebook/fboss)       |                         | 
+ [XORP](http://www.xorp.org/)                     |                         | 
+ [GoBGP](https://github.com/osrg/gobgp)           | APL2.0                  | 
+ [openBGPD/openOSPFD](http://www.openbgpd.org/)   | BSD                     | 
+ [exaBGP](https://github.com/Exa-Networks/exabgp) | BSD-style               | used for integration rather than forwarding
+ .                                                |                         | 
 
 
 ## State-handling
 
- name           | license                     | notes                              | more info
- ---------------|-----------------------------|------------------------------------|----------
- SONiC          |                             |                                    | 
- Linux Kernel   |                             |                                    | 
- OVSDB          |                             |                                    | https://tools.ietf.org/html/rfc7047
- FlexSwitch     |                             |                                    | 
-                |                             |                                    | 
-                |                             |                                    | 
-                |                             |                                    | 
-                |                             |                                    | 
+ name           | license                     | notes                              
+ ---------------|-----------------------------|------------------------------------
+ SONiC          |                             | 
+ Linux Kernel   |                             | 
+ OVSDB          |                             | 
+ FlexSwitch     |                             | 
+ .              |                             | 
 
 
 ## Hardware abstraction (forwarding)
 
- name           | license                       | supported hardware | notes                             | more info
- ---------------|-------------------------------|--------------------|-----------------------------------|----------
- SAI            | OWFa1.0                       |                    |                                   | https://github.com/opencomputeproject/SAI
- switchdev      | GPLv2                         |                    |                                   | https://www.kernel.org/doc/Documentation/networking/switchdev.txt
- openflow       | implementation-specific       |                    | IP-based API specification, not an implementation | 
- P4Runtime      | implementation-specific       |                    |                                   | https://p4.org/p4-runtime
- openNSL        | APL2.0/Proprietary            | Broadcom           |                                   | 
- asicd          | APL2.0?                       |                    |                                   | 
- linux/software | GPLv2                         |                    |                                   | 
-                |                               |                    |                                   | 
-                |                               |                    |                                   | 
+ name           | license                       | supported hardware | notes                             
+ ---------------|-------------------------------|--------------------|-----------------------------------
+ [SAI](https://github.com/opencomputeproject/SAI)            | OWFa1.0                       |                    |
+ [switchdev](https://www.kernel.org/doc/Documentation/networking/switchdev.txt)      | GPLv2                         |                    |
+ [openflow]()       | implementation-specific       |                    | IP-based API specification, not an implementation
+ [P4Runtime](https://p4.org/p4-runtime)      | implementation-specific?      |                    | match-action programming language
+ [openNSL](https://github.com/Broadcom-Switch/OpenNSL)        | APL2.0/Proprietary            | Broadcom           |
+ [asicd](https://github.com/FlexSNR/asicd)          | APL2.0?                       |                    |
+ linux/software | GPLv2                         |                    |
+ .              |                               |                    |
 
