@@ -4,23 +4,24 @@ Information to make sense of the state of open switching/routing
 
 ## switch OSes/stacks
 
- name            | bare-metal | routing | state         | hardware abstraction | license            | notes                                            | more info
- ----------------|------------|---------|---------------|--------------|----------------------------|--------------------------------------------------|----------
- ACS             | yes?       |         | SONiC         | SAI          |                            |                                                  | https://azure.microsoft.com/en-us/blog/microsoft-showcases-the-azure-cloud-switch-acs/
- cumulus         | yes        | FRR     | Linux kernel  | switchd      |                            |                                                  | https://cumulusnetworks.com/
- picOS           | yes        |         | OVSDB?        | openflow     |                            |                                                  | https://www.pica8.com/
- ONL             | yes        |         |               | openflow     |                            |                                                  | https://opennetlinux.org/
- switch light    |Switch Light OS |     |               | openflow     |                            | openflow controller                              | https://www.bigswitch.com/solutions/technology/switch-light
- stratum         | yes?       |         |               | P4Runtime    |                            | not yet available (09/2019)                      | 
- OpenSwitch OPS  | yes        |         | OVSDB         | openNSL      |                            | deprecated?                                      |
- OpenSwitch OPX  | yes        |         | Linux/CPS adapter | SAI      |                            |                                                  | https://www.openswitch.net/
- Noviware        | yes        |         | proprietary?  | P4/openflow  | proprietary?               |                                                  | 
- Vyatta/VyOS     | yes        | quagga  | Linux         | Linux (software) | various open-source    | runs on x86 hardware for software forwarding     | 
- snaproute       | CN-NOS     |         | FlexSwitch    | asicd        |                            |                                                  | https://www.snaproute.com/
- FBOSS           |            | FBOSS?  |               | SAI (was OpenNSL) |                       | all-in-one?                                      | 
- ONOS            |            |         |               | openflow/netconf/openconf/...   |         |                                                  | https://onosproject.org/ https://wiki.onosproject.org         
- openvswitch     |            | N/A     | OVSDB         | software?    |                            | software forwarding                              | https://www.openvswitch.org/
- .               |            |         |               |              |                            |                                                  |          
+ name                                                                                           | active development | bare-metal | routing | state         | hardware abstraction | license                    | notes
+ -----------------------------------------------------------------------------------------------|--------------------|------------|---------|---------------|----------------------|----------------------------|------
+ [ACS](https://azure.microsoft.com/en-us/blog/microsoft-showcases-the-azure-cloud-switch-acs/)  | no?                | yes?       |         | SONiC         | SAI                  |                            | announced in 2015, not sure if this is an actual product or just the predecessor to SONiC?
+ [cumulus](https://cumulusnetworks.com/)                                                        | yes                | yes        | FRR     | Linux kernel  | switchd              |                            | 
+ [picOS](https://www.pica8.com/)                                                                | yes                | yes        |         | OVSDB?        | openflow             |                            | 
+ [ONL](https://opennetlinux.org/)                                                               | yes                | yes        |         |               | openflow             |                            | 
+ [switch light](https://www.bigswitch.com/solutions/technology/switch-light)                    |                    |Switch Light OS |     | indigo        | ivs/openflow?        |                            |                    
+ [stratum](https://www.opennetworking.org/stratum/)                                             | no public release  | yes?       |         |               | P4Runtime            |                            | not yet available (09/2019)
+ [OpenSwitch OPS](https://bm-switch.com/index.php/blog/whitebox_basics_ops/)                    | no                 | yes        |         | OVSDB         | openNSL              |                            | deprecated?
+ [OpenSwitch OPX](https://www.openswitch.net/)                                                  | yes                | yes        |         | Linux/CPS adapter | SAI              | APLv2, various?            | 
+ [Noviware]()                                                                                   |                    | yes        |         | proprietary?  | P4/openflow          | proprietary?               | 
+ [Vyatta]()/VyOS                                                                                |                    | yes        | quagga  | Linux         | Linux (software)     | various open-source        | runs on x86 hardware for software forwarding
+ [snaproute](https://www.snaproute.com/)                                                        |                    | CN-NOS     |         | FlexSwitch    | asicd                |                            | 
+ [FBOSS]()                                                                                      |                    |            | FBOSS?  |               | SAI (was OpenNSL)    | BSD-style                  | all-in-one?
+ [ONOS](https://onosproject.org/)                                                               |                    |            |         |               | openflow/netconf/openconf/...   | APLv2           | [wiki](https://wiki.onosproject.org)
+ [openvswitch](https://www.openvswitch.org/)                                                    |                    |            | N/A     | OVSDB         | software?            | APLv2                      | software forwarding
+ [ZebOS](https://www.ipinfusion.com/products/zebos/)                                            | yes                |            |         | ZebM/ZebOS-XP | ZebIC                | proprietary                | 
+ .                                                                                              |                    |            |         |               |                      |                            | 
 
 
 
@@ -30,6 +31,7 @@ I haven't decided where these fit yet:
 
  * Ryu (openflow controller, written in python)
  * openstack neutron (datacenter virtualization orchestration?)
+ * open daylight
 
 
 ## routing daemons
@@ -39,7 +41,7 @@ I haven't decided where these fit yet:
  [BIRD](https://bird.network.cz/)                 | GPL                     | common in route reflectors
  [FRR](https://frrouting.org/)                    |                         | "Free Range Routing" (fork of Quagga)
  [Quagga](http://www.quagga.net/)                 |                         | fork of Zebra
- zebra                                            |                         | (old, unmaintained)
+ [zebra]()                                        |                         | (old, unmaintained)
  [FBOSS](https://github.com/facebook/fboss)       |                         | 
  [XORP](http://www.xorp.org/)                     |                         | 
  [GoBGP](https://github.com/osrg/gobgp)           | APL2.0                  | 
@@ -50,13 +52,14 @@ I haven't decided where these fit yet:
 
 ## State-handling
 
- name           | license                     | notes                              
- ---------------|-----------------------------|------------------------------------
- SONiC          |                             | 
- Linux Kernel   |                             | 
- OVSDB          |                             | 
- FlexSwitch     |                             | 
- .              |                             | 
+ name                                                                     | license                     | notes                              
+ -------------------------------------------------------------------------|-----------------------------|------------------------------------
+ [SONiC](https://azure.github.io/SONiC/)                                  |                             | 
+ Linux Kernel                                                             |                             | 
+ [OVSDB]()                                                                | APLv2                       | There are a lot of proprietary vendor implementations, part of openvswitch
+ [FlexSwitch]()                                                           |                             | 
+ [IVS (indigo)](http://www.projectfloodlight.org/indigo-virtual-switch/)  | EPLv1 or proprietary        | 
+ .                                                                        |                             | 
 
 
 ## Hardware abstraction (forwarding)
@@ -70,5 +73,6 @@ I haven't decided where these fit yet:
  [openNSL](https://github.com/Broadcom-Switch/OpenNSL)        | APL2.0/Proprietary            | Broadcom           |
  [asicd](https://github.com/FlexSNR/asicd)          | APL2.0?                       |                    |
  linux/software | GPLv2                         |                    |
+ [indigo](http://www.projectfloodlight.org/indigo/)  | EPLv1 or proprietary       |                    | abstraction layer on top of openflow
  .              |                               |                    |
 
